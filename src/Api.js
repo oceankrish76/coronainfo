@@ -64,7 +64,6 @@ const InfoList = (props) => {
 
     return (
         <>
-
             <div className="row">
                 <div className="col-left">
                 <div className="column1">
