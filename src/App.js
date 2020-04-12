@@ -26,9 +26,7 @@ class App extends Component {
         <div className="column-map">
           <ColumnTwo />
         </div>
-        <div className="column">
-          <p className="displaycountrycode"></p>
-        </div>
+        
       </>
     );
   }

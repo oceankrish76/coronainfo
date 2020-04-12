@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import ColumnTwo from './ColumnTwo';
+const mapbox_token = 'pk.eyJ1Ijoib2NlYW5rcmlzaDc2IiwiYSI6ImNqeWpnczRhazAzYnAzbXFoNm44bTlsM3EifQ.ooAp0kr_T2KY_KyhV549TQ';
 class Api extends Component {
     constructor(props) {
         super(props);
@@ -61,19 +62,18 @@ const InfoList = (props) => {
         var coordlong = props.coordinates.longitude;
         var last = Object.keys(getcountrydata).pop();
         document.querySelector('.displaycountrycode').textContent = last + ' ' + 'Infected: ' + getcountrydata[last] + ' ' + 'Coordinates: ' + 'latitude: ' + coordlat + ' longitude: ' + coordlong;
+        //document.querySelector('.country').style.backgroundColor = 'red';
     }
     //const returnedhandleclick = handleClick(props.country_code);
 
     return (
         <>
-            
-                <p className="countrylist-p"><a className="countrynamesclass" id={props.country_code} onClick={() => handleClick(props.history)}>
+            <span>
+                <p><a className="countrynames-a" id={props.country_code} onClick={() => handleClick(props.history)}>
                     <strong className="country">{props.country} </strong></a>
                 </p>
-                <p>Latest: {props.latest}</p>
-
-
-
+                <p className="countrylist-p">Latest: {props.latest}</p>
+            </span>
         </>
     )
 }
