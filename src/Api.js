@@ -57,25 +57,23 @@ const InfoList = (props) => {
     //const btn = document.querySelector('.countrynamesclass');
     let handleClick = (getcountrydata) => {
         //alert(getcountrycode)
+        var coordlat = props.coordinates.latitude;
+        var coordlong = props.coordinates.longitude;
         var last = Object.keys(getcountrydata).pop();
-        document.querySelector('.displaycountrycode').textContent = last + ': ' + getcountrydata[last];
+        document.querySelector('.displaycountrycode').textContent = last + ' ' + 'Infected: ' + getcountrydata[last] + ' ' + 'Coordinates: ' + 'latitude: ' + coordlat + ' longitude: ' + coordlong;
     }
     //const returnedhandleclick = handleClick(props.country_code);
 
     return (
         <>
-            <div className="row">
-                <div className="col-left">
-                <div className="column1">
-                    <p className="eachcountry"><button className="countrynamesclass" id={props.country_code} onClick={() => handleClick(props.history)}>
-                        <strong>{props.country}</strong></button>
-                    </p>
-                    </div>
-                </div>
-                <div className="column">
-                    <p className="displaycountrycode"></p>
-                </div>
-            </div>
+            
+                <p className="countrylist-p"><a className="countrynamesclass" id={props.country_code} onClick={() => handleClick(props.history)}>
+                    <strong className="country">{props.country} </strong></a>
+                </p>
+                <p>Latest: {props.latest}</p>
+
+
+
         </>
     )
 }

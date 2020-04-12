@@ -8,7 +8,9 @@ import ColumnTwo from './ColumnTwo';
 
 const Coder = (props) => {
   return (
-    <h1>{props.name}</h1>
+    <div className="currentsituation-bar">
+      <h1>{props.name}</h1>
+    </div>
   )
 }
 
@@ -18,9 +20,14 @@ class App extends Component {
       <>
         <PrimarySearchAppBar />
         <Coder name="Current Situation" status="online" />
-        <Api />
+        <div className="column1 eachcountry">
+          <Api />
+        </div>
+        <div className="column-map">
+          <ColumnTwo />
+        </div>
         <div className="column">
-          <p>Loading</p>
+          <p className="displaycountrycode"></p>
         </div>
       </>
     );
