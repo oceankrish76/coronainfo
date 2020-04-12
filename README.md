@@ -1,3 +1,7 @@
+##Snapshot 
+
+![Snapshot](https://github.com/oceankrish76/coronainfo/blob/master/public/img/screenshot.png?raw=true)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
