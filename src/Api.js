@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import { render } from "react-dom";
 import './App.css';
 import axios from 'axios';
 import ColumnTwo from './ColumnTwo';
@@ -52,20 +51,47 @@ class Api extends Component {
         );
     }
 }
+class InfoList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentCountryCode: null,
+        };
+    }
+    //        const { Email, Surname, Name } = this.props.info;
+    handleClick = (getcountrycode) => {
+        this.setState({ currentCountryCode: getcountrycode });
+    };
 
+    render() {
+        const { currentCountryCode } = this.state;
+        return (
+            <>
+                <p className="eachcountry">
+                    <button
+                        className="countrynamesclass"
+                        id={this.props.country_code}
+                        onClick={() => this.handleClick(this.props.country_code)}
+                    >
+                        <strong>{this.props.country}</strong>
+                    </button>
+                </p>
+                <p>Country code is: {currentCountryCode}</p>
+            </>
+        );
+    }
+}
+export default Api;
+
+/*
 const InfoList = (props) => {
-    //const { Email, Surname, Name } = this.props.info;
-    //const btn = document.querySelector('.countrynamesclass');
     let handleClick = (getcountrydata) => {
-        //alert(getcountrycode)
         var coordlat = props.coordinates.latitude;
         var coordlong = props.coordinates.longitude;
         var last = Object.keys(getcountrydata).pop();
         document.querySelector('.displaycountrycode').textContent = last + ' ' + 'Infected: ' + getcountrydata[last] + ' ' + 'Coordinates: ' + 'latitude: ' + coordlat + ' longitude: ' + coordlong;
-        //document.querySelector('.country').style.backgroundColor = 'red';
-    }
-    //const returnedhandleclick = handleClick(props.country_code);
 
+    }
     return (
         <>
             <span>
@@ -79,3 +105,4 @@ const InfoList = (props) => {
 }
 
 export default Api;
+ */

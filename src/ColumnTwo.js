@@ -16,7 +16,9 @@ class ColumnTwo extends Component {
             worldwiderecovered: 232232222
         };
     }
-    componentDidMount() {
+    componentDidMount(props) {
+        //const coordlat = document.querySelector('.plotlat').textContent;
+        //const coordlng = document.querySelector('.plotlng').textContent;
         const map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/light-v10',
@@ -30,6 +32,11 @@ class ColumnTwo extends Component {
                 zoom: map.getZoom().toFixed(2)
             });
         });
+        new mapboxgl.Marker({
+            draggable: false
+        })
+            .setLngLat([this.state.lng, this.state.lat])
+            .addTo(map); 
     }
     render() {
     return (
@@ -37,7 +44,9 @@ class ColumnTwo extends Component {
             <div>
                 <div className='sidebarStyle'>
                     <div>Worldwide Infected: {this.state.worldwideinfected} | Deaths: {this.state.worldwidedeaths} | Recovered: {this.state.worldwiderecovered}</div>
-                        <p className="displaycountrycode"></p>
+                    <p className="displaycountrycode"></p>
+                    <p className="plotlat"></p>
+                    <p className="plotlng"></p>
                 </div>
                 <div ref={el => this.mapContainer = el} className='mapContainer' />
             </div>
