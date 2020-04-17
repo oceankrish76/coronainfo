@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import ColumnTwo from './ColumnTwo';
-const mapbox_token = 'pk.eyJ1Ijoib2NlYW5rcmlzaDc2IiwiYSI6ImNqeWpnczRhazAzYnAzbXFoNm44bTlsM3EifQ.ooAp0kr_T2KY_KyhV549TQ';
+import InfoList from './InfoList';
+
+//const mapbox_token = 'pk.eyJ1Ijoib2NlYW5rcmlzaDc2IiwiYSI6ImNqeWpnczRhazAzYnAzbXFoNm44bTlsM3EifQ.ooAp0kr_T2KY_KyhV549TQ';
 class Api extends Component {
     constructor(props) {
         super(props);
@@ -10,18 +11,16 @@ class Api extends Component {
             data: [],
             opened: true,
             selected: '',
-            message: ''
+            text: ''
         };
-        // since you're using this method in a callback, don't forget to
-        // bind the this context
-        //this.handleClick = this.handleClick.bind(this);
-        this.el = document.createElement("div");
     }
+
     componentDidMount() {
         axios
-            .get("https://covid19api.herokuapp.com/confirmed")
+            //.get("https://covid19api.herokuapp.com/confirmed")
+            .get("https://api.covid19api.com/summary")
             .then(response => {
-                const data = response.data.locations;
+                const data = response.data.Countries;
                 this.setState({ data: data });
             })
             .catch(error => {
@@ -38,49 +37,24 @@ class Api extends Component {
                     console.error('Error', error.message);
                 }
             });
+
+
     }
 
     render() {
         return (
+            <>
             <div className="api">
                 {this.state.data.map((item, index) => (
-                    <InfoList key={index} {...item} />
+                    <InfoList key={index} {...item} addToState={this.addToState} />
                 ))}
 
             </div>
-        );
-    }
-}
-class InfoList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentCountryCode: null,
-        };
-    }
-    //        const { Email, Surname, Name } = this.props.info;
-    handleClick = (getcountrycode) => {
-        this.setState({ currentCountryCode: getcountrycode });
-    };
-
-    render() {
-        const { currentCountryCode } = this.state;
-        return (
-            <>
-                <p className="eachcountry">
-                    <button
-                        className="countrynamesclass"
-                        id={this.props.country_code}
-                        onClick={() => this.handleClick(this.props.country_code)}
-                    >
-                        <strong>{this.props.country}</strong>
-                    </button>
-                </p>
-                <p>Country code is: {currentCountryCode}</p>
             </>
         );
     }
 }
+
 export default Api;
 
 /*
@@ -88,7 +62,7 @@ const InfoList = (props) => {
     let handleClick = (getcountrydata) => {
         var coordlat = props.coordinates.latitude;
         var coordlong = props.coordinates.longitude;
-        var last = Object.keys(getcountrydata).pop();
+        var last = Object.keys(getcountrta).pop();
         document.querySelector('.displaycountrycode').textContent = last + ' ' + 'Infected: ' + getcountrydata[last] + ' ' + 'Coordinates: ' + 'latitude: ' + coordlat + ' longitude: ' + coordlong;
 
     }

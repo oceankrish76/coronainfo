@@ -24,7 +24,7 @@ class App extends Component {
           <Api />
         </div>
         <div className="column-map">
-          <ColumnTwo />
+          <ColumnTwo color="Click on country to see the details" />
         </div>
         
       </>

@@ -1,3 +1,9 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 .App {
   text-align: center;
 }
@@ -133,7 +139,7 @@
   border-bottom: 1px solid silver;
 }
 .currentsituation-bar {
-  /* background-color: #e4e4e4; */
+  /* background-color: #fbefd1; */
   height: 74px;
   background-color: #bbdefb;
   padding: 1px;
@@ -141,8 +147,6 @@
 .mapContainer {
     position: absolute;
     top: 160px;
-    right: 0;
-    left: 515px;
     bottom: 40px;
     height: 80vh;
     width: 67%;
@@ -152,7 +156,6 @@ display: inline-block;
 position: absolute;
 /* top: 0;
 left: 0; */
-margin: 12px;
 background-color: #404040;
 color: #ffffff;
 z-index: 1 !important;

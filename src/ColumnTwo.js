@@ -13,12 +13,15 @@ class ColumnTwo extends Component {
             zoom: 2,
             worldwideinfected: 434343434,
             worldwidedeaths: 32322,
-            worldwiderecovered: 232232222
+            worldwiderecovered: 232232222,
+            currentCountry_Code: '',
+            datafromInfoList: this.props.currentCountryCode
         };
     }
+    static defaultProps = {
+        currentCountryCode: 0
+    }
     componentDidMount(props) {
-        //const coordlat = document.querySelector('.plotlat').textContent;
-        //const coordlng = document.querySelector('.plotlng').textContent;
         const map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/light-v10',
@@ -36,22 +39,25 @@ class ColumnTwo extends Component {
             draggable: false
         })
             .setLngLat([this.state.lng, this.state.lat])
-            .addTo(map); 
+            .addTo(map);
+    }
+    getActions = () => {
+        return {
+            resetValue: this.myCallback
+        }
     }
     render() {
-    return (
-        <>
-            <div>
+        return (
+            <>
                 <div className='sidebarStyle'>
                     <div>Worldwide Infected: {this.state.worldwideinfected} | Deaths: {this.state.worldwidedeaths} | Recovered: {this.state.worldwiderecovered}</div>
-                    <p className="displaycountrycode"></p>
+                    <p className="displaycountrycode">{this.props.color}</p>
                     <p className="plotlat"></p>
                     <p className="plotlng"></p>
                 </div>
                 <div ref={el => this.mapContainer = el} className='mapContainer' />
-            </div>
-        </>
-    );
+            </>
+        );
     }
 }
 export default ColumnTwo;
