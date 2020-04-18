@@ -45,7 +45,8 @@ html {
 
 .MuiAppBar-colorPrimary{
  /*  background-color: #1c30a0 !important; */
- background-color:#1c30a0 !important;
+ /* background-color:#1c30a0 !important; */
+ background-color: #0054a3 !important;
  color: #c8dee4 !important
 }
 .MuiPaper-elevation4{
@@ -122,6 +123,7 @@ html {
 } */
 .countrynames-a {
   cursor: pointer;
+  width: 300px !important;
 }
 .countrynames-a:hover {
 	/* background:linear-gradient(to bottom, #415989 5%, #2e466e 100%); */

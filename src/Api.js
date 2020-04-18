@@ -40,11 +40,12 @@ class Api extends Component {
 
 
     }
-
+    
     render() {
+        
         return (
             <>
-            <div className="api">
+                <div className="api" id="api" onload="scroll()">
                 {this.state.data.map((item, index) => (
                     <InfoList key={index} {...item} addToState={this.addToState} />
                 ))}
